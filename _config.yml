@@ -1,1 +1,14 @@
+title: "caizhiyuannn pages."
+description: "nothing to say.."
 theme: jekyll-theme-modernist
+
+baseurl: ''
+
+defaults:
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "posts"
+      author: "caizhiyuannn"

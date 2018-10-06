@@ -4,4 +4,6 @@ layout: default
 
 <!-- 待办： 功能显示最新发表的文章 -->
 
-<li>nothing to do..</li>
+{% assign post = site.posts | sort: "date" | last %}
+
+{{ post.content }}

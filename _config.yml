@@ -16,4 +16,3 @@ defaults:
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-github-metadata

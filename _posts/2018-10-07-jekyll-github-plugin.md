@@ -7,6 +7,8 @@ tags: github jekyll 2018
 
 # 在 GitHub 配置 Jekyll 插件
 
+[查看Github Help](https://help.github.com/articles/configuring-jekyll-plugins/)
+
 你可以通过 _config.yml 里面添加插件来拓展额外的功能。
 
 例如：

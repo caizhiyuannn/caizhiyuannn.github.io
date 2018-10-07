@@ -6,6 +6,8 @@ date: "2018-10-07 22:00"
 
 # 配置 Jekyll
 
+[查看GitHub Help](https://help.github.com/articles/configuring-jekyll/)
+
 GitHub Pages 可以通过 jekyll 部署，可以通过 _config.yml 配置更多的设置
 
 ## GitHub 中可以改变的选项

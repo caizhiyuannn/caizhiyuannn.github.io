@@ -10,5 +10,9 @@ defaults:
       path: "_posts"
       type: "posts"
     values:
-      layout: "posts"
+      layout: "post"
       author: "caizhiyuannn"
+
+
+plugins:
+  - jekyll-seo-tag

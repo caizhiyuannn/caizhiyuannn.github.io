@@ -16,3 +16,6 @@ defaults:
 
 plugins:
   - jekyll-seo-tag
+
+github:
+  is_project_page: true

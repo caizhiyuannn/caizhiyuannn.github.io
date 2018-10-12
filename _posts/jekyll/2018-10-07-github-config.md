@@ -2,6 +2,8 @@
 layout: post
 title: "jekyll _config.yml in github pages"
 date: "2018-10-07 22:00"
+categories: jekyll
+tags: jekyll 2018
 ---
 
 # 配置 Jekyll

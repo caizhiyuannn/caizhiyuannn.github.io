@@ -2,8 +2,8 @@
 layout: post
 title: "Linux 内核的编译"
 date: '2016-04-28 19:54:00'
-categories: Linux
-tags: Linux Centos Debian 2016
+categories: linux
+tags: linux 2016 kernel
 ---
 
 

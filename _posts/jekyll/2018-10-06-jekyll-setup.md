@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "使用 jekyll 部署静态站点"
+categories: jekyll
+tags: jekyll 2018
 ---
 
 # 使用 jekyll 部署静态站点

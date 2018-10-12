@@ -2,8 +2,8 @@
 layout: post
 title: "使用Liquid </br>搭建Jekyll"
 date: "2015-12-15"
-categories: Liquid
-tags: Jekyll Liquid Github
+categories: liquid
+tags: jekyll liquid
 ---
 
 ## Liquid 语法使用

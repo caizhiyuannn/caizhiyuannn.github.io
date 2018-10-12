@@ -2,8 +2,8 @@
 layout: post
 title: "Liquid date command"
 date: "2015-12-15"
-categories: Liquid
-tags: Jekyll Liquid Github Command
+categories: liquid
+tags: jekyll liquid
 ---
 
 ### Liquid  时间筛选器date 的使用方法及选项

@@ -2,9 +2,9 @@
 layout: post
 title: "Jekyll _config.yml 配置"
 date: "2015-12-16"
-categories: Jekyll
+categories: jekyll
 tags: yml 2015 jekyll config
-author: "Matthew·Cai"
+author: "caizhiyuannn"
 ---
 
 #### _config.yml 配置文件用法说明 **/** 后面为Jekyll 命令选项

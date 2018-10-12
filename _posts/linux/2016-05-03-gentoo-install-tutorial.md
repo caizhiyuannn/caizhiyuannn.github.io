@@ -2,8 +2,8 @@
 layout: post
 title: "Gentoo Linux 安装教程"
 date: '2016-05-03 11:54:00'
-categories: Linux
-tags: Linux Gentoo 2016
+categories: linux
+tags: linux gentoo 2016
 ---
 
 # gentoo的安装手册

@@ -2,8 +2,8 @@
 layout: post
 title: "Jekyll 结构和头信息"
 date: '2015-12-16 21:37:00'
-categories: Jekyll
-tags: Jekyll Code 2015 Github 
+categories: jekyll
+tags: jekyll code 2015 github
 ---
 
 # Jekyll 目录结构

@@ -1,0 +1,23 @@
+---
+layout: default
+permalink: /categories/
+---
+
+<!-- 获取所有的分类名称并进行排序，默认降序的方式 -->
+
+{% assign categories = site.categories | sort %}
+
+{% for category in categories %}
+
+<h3>{{ category | first }}</h3>
+<ul>
+    {% for post in category.last %}
+    <li>
+        <a href="{{ post.url }}">{{ post.title | strip_html }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+{% endfor %}
+

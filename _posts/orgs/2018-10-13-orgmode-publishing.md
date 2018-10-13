@@ -40,6 +40,10 @@ tags:
 Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML，可以自动导出对应的css，js，image等文件部署到web服务器。
 也可以将org 转化成markdown， pdf 等格式
 
+[参考官方文档](https://orgmode.org/manual/Publishing.html#Publishing)
+
+同时可以查看 org-mode 中的源文件：org-publish.el 说明
+
 
 <a id="orge961b01"></a>
 

@@ -15,7 +15,7 @@
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: emacs
 #+JEKYLL_TAGS: orgmode emacs linux lisp
-
+#+EXPORT_FILE_NAME: 2018-10-13-orgmode-publishing
 
 
 * Publishing

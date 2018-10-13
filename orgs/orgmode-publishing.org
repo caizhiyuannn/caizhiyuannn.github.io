@@ -201,6 +201,7 @@
       :html-validation-link	                        org-html-validation-link
       :html-viewport	                                org-html-viewport
       :html-xml-declaration	                        org-html-xml-declaration
+      :body-only                                      ;; only export section between <body></body>
     #+END_EXAMPLE
 
 *** LaTeX 指定属性

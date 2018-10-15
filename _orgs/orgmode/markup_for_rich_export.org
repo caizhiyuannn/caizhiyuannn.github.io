@@ -1,0 +1,130 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:nil arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: org-mode 丰富导出内容标记
+#+DATE: <2018-10-15 Mon 00:10>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: emacs
+#+JEKYLL_TAGS: emacs orgmode
+#+STARTUP: showall
+#+EXPORT_FILE_NAME: 2018-10-15-markup_for_rich_export
+
+* 简介
+  [[https://orgmode.org/manual/Markup.html#Markup][官网文档链接]] \\
+  由于像HTML、LaTeX 允许更丰富的格式，org-mode 也提供标记用于丰富导出的格式。
+
+* 段落
+  段落之间至少有一行空行分割来表示换行，如果需要在段落中加强断行符，可以行尾添加"\\"。
+
+  - 为了在一个区域中保留换行符、缩进和空白行，但是在其他情况下使用普通格式，可以使用一下格式，
+    #+BEGIN_EXAMPLE
+      快捷键： <v TAB
+
+      ,#+BEGIN_VERSE
+       Great clouds overhead
+       Tiny black birds rise and fall
+       Snow covers Emacs
+
+           -- AlexSchroeder
+      ,#+END_VERSE
+    #+END_EXAMPLE
+
+  - 当引用另一份文件的段落时，习惯上把它格式化为在左页边和右页边缩进的段落。你可以在Org模式的文档中包括这样的引用:
+    #+BEGIN_EXAMPLE
+      快捷键：<q TAB
+
+      ,#+BEGIN_QUOTE
+      Everything should be made as simple as possible,
+      but not any simpler -- Albert Einstein
+      ,#+END_QUOTE
+    #+END_EXAMPLE
+
+  - 如果要居中文字，可以这样引用：
+    #+BEGIN_EXAMPLE
+      快捷键： <c TAB
+
+      ,#+BEGIN_CENTER
+      Everything should be made as simple as possible, \\
+      but not any simpler
+      ,#+END_CENTER
+    #+END_EXAMPLE
+
+* 强调和等宽字体
+  |------------------+----------------------------------|
+  | 格式             | 用法                             |
+  |------------------+----------------------------------|
+  | *粗体*           | ~*粗体*~                         |
+  |------------------+----------------------------------|
+  | /斜体/           | ~/斜体/~                         |
+  |------------------+----------------------------------|
+  | _下划线_         | ~_下划线_~                       |
+  |------------------+----------------------------------|
+  | =原样输出=       | ~=保持原样输出，内部字符会显示=~ |
+  |------------------+----------------------------------|
+  | ~代码~           | =~代码~=                         |
+  |------------------+----------------------------------|
+  | +strike-through+ | =+这里是删除线+=             |
+  |------------------+----------------------------------|
+
+  - [ ] 其它, 待翻译
+    #+BEGIN_QUOTE
+    To turn off fontification for marked up text, you can set org-fontify-emphasized-text to nil.
+    To narrow down the list of available markup syntax, you can customize org-emphasis-alist.
+    To fine tune what characters are allowed before and after the markup characters,
+    you can tweak org-emphasis-regexp-components.
+    Beware that changing one of the above variables will not take effect until you reload Org,
+    for which you may need to restart Emacs.
+    #+END_QUOTE
+  
+
+* 水平线规则
+  只有破折号至少五个的一行将会以水平线导出，如： =-----=
+  -----
+
+* TODO 图像和表格
+
+* Literal examples
+  - 主要用于示例展示，格式内容将会原样输出。
+    #+BEGIN_EXAMPLE
+      格式：<e TAB
+
+      ,#+BEGIN_EXAMPLE
+      Some example from a text file.
+      ,#+END_EXAMPLE
+    #+END_EXAMPLE
+
+  - 代码块展示
+    #+BEGIN_EXAMPLE
+      指定编程语言将支持高亮
+
+      ,#+BEGIN_SRC emacs-lisp
+        (defun org-xor (a b)
+           "Exclusive or."
+           (if a (not b) b))
+      ,#+END_SRC
+    #+END_EXAMPLE
+  
+* 特殊符号
+  可以使用 LaTeX-like 风格的语法插入特殊符号，例如 =\alpha= 表示希腊字母， =\to= 表示箭头。
+  如果在单词中需要这样一个符号，那么用一对花括号结束它。
+  例如：
+  #+BEGIN_QUOTE
+  Pro tip: Given a circle =\Gamma= of diameter d, the length of its circumference
+  is =\pi{}d=.
+  
+  Pro tip: Given a circle \Gamma of diameter d, the length of its circumference
+  is \pi{}d.
+  #+END_QUOTE
+  - =C-c C-x \= 显示 UTF8 字符，将显示LaTeX风格特殊字符的显示效果
+
+* TODO 上标和下标
+
+* TODO 在org文档中嵌入 LaTeX

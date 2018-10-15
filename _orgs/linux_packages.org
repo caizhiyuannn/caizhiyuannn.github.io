@@ -1,0 +1,141 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: Linux 上一些软件包记录
+#+DATE: <2016-11-18 Fri 10:00>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: linux
+#+JEKYLL_TAGS: linux packages
+#+STARTUP: showall
+#+EXPORT_FILE_NAME: 2016-11-18-linux_packages
+
+* linux 上的一些软件包
+
+** ASCII 输出文字的软件
+   - *COWSAY*
+
+     cowsay, 通过一个小奶牛把需要显示的文字输出到屏幕上。
+     #+BEGIN_SRC sh
+        # 安装cowsay
+        # sudo apt-get install cowsay
+        cowsay "hello world"
+
+     #+END_SRC
+     RESULTS:
+     #+BEGIN_EXAMPLE
+           ______________
+          < mewbies rule >
+           --------------
+                  \   ^__^
+                   \  (oo)\_______
+                      (__)\       )\/\
+                          ||----w |
+                          ||     ||
+
+     #+END_EXAMPLE
+
+   - *XCOWSAY*
+
+     xcowsay 为gui模式版的cowsay。
+
+   - *TOILET*
+
+     toilet, 通过libcaca一个图形库输出ASCII文本，具有颜色的特性.
+     #+BEGIN_SRC sh
+        toilet "Mewbies"
+     #+END_SRC
+     RESULTS:
+     #+BEGIN_EXAMPLE
+                            #        "
+       m mm    mmm  m     m #mmm   mmm     mmm    mmm
+       #"  #  #"  # "m m m" #" "#    #    #"  #  #   "
+       #   #  #""""  #m#m#  #   #    #    #""""   """m
+       #   #  "#mm"   # #   ##m#"  mm#mm  "#mm"  "mmm"
+
+       ▄    ▄        ▀▀█    ▀▀█                                       ▀▀█        █
+       █    █  ▄▄▄     █      █     ▄▄▄         ▄     ▄  ▄▄▄    ▄ ▄▄    █     ▄▄▄█
+       █▄▄▄▄█ █▀  █    █      █    █▀ ▀█        ▀▄ ▄ ▄▀ █▀ ▀█   █▀  ▀   █    █▀ ▀█
+       █    █ █▀▀▀▀    █      █    █   █         █▄█▄█  █   █   █       █    █   █
+       █    █ ▀█▄▄▀    ▀▄▄    ▀▄▄  ▀█▄█▀          █ █   ▀█▄█▀   █       ▀▄▄  ▀█▄██   
+
+     #+END_EXAMPLE
+
+   - *FIGLET*
+
+     figlet, -w 为显示的宽度（字符），-f 可以定义不同的字体样式，-c 使生成的 ASCII 艺术字居中显示。
+     #+BEGIN_SRC sh
+        figlet -f slant "hello world"
+     #+END_SRC
+     RESULTS:
+     #+BEGIN_EXAMPLE
+           __         ____                         __    __
+          / /_  ___  / / /___ _      ______  _____/ /___/ /
+         / __ \/ _ \/ / / __ \ | /| / / __ \/ ___/ / __  /
+        / / / /  __/ / / /_/ / |/ |/ / /_/ / /  / / /_/ /
+       /_/ /_/\___/_/_/\____/|__/|__/\____/_/  /_/\__,_/
+
+     #+END_EXAMPLE
+
+   - *FORTUNE*
+
+     Fortune, 会随机输入一句格言。
+     #+BEGIN_SRC sh
+        fortune -s
+     #+END_SRC
+     RESULTS:
+     #+BEGIN_EXAMPLE
+       Did you know that if you took all the economists in the world and lined
+       them up end to end, they'd still point in the wrong direction?
+
+     #+END_EXAMPLE
+
+   - *BOXES*
+
+     boxes, 输出ascii文字被包围在图案的里面
+     #+BEGIN_SRC sh
+        figlet -f slant mewbies | boxes -d peek -pa2t0b0
+     #+END_SRC
+     RESULTS:
+     #+BEGIN_EXAMPLE
+       /*       _\|/_
+       (o o)
+       +----oOO-{_}-OOo---------------------------------+
+       |                             __    _            |
+       |     ____ ___  ___ _      __/ /_  (_)__  _____  |
+       |    / __ `__ \/ _ \ | /| / / __ \/ / _ \/ ___/  |
+       |   / / / / / /  __/ |/ |/ / /_/ / /  __(__  )   |
+       |  /_/ /_/ /_/\___/|__/|__/_.___/_/\___/____/    |
+       |                                                |
+       +-----------------------------------------------*/
+
+     #+END_EXAMPLE
+
+   - *DITAA*
+
+     ditaa, 将ascii 符号转换成png格式的图像，需要java的支持。
+     #+BEGIN_SRC ditaa :file test_ditaa.png :cmdline -r -s 0.8
+         +-----------+         +----------+
+         |           |         |          |
+         |   PLC     <--------->    PLC   |
+         |  Network  |         |    c707  |
+         |   cRED    |         |          |
+         +-----------+         +-+--------+
+                                 |
+                                 |
+                    +------------+
+                    |
+              +-----v------+             +-------------+             +-------------+
+              |            |             |  Shared     |             |             |
+              |  Database  +------------->  {d} cGRE   +-------------> Executive   |
+              |  c707      |             |             |             |  c707       |
+              +------------+             +-------------+             +-------------+
+
+     #+END_SRC

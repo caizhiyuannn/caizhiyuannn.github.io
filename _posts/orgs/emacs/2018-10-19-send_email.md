@@ -86,9 +86,9 @@ emacs 要发送邮件，通过 `C-x m` 切换到新的缓冲区新建邮件，�
 你可以使用任何头字段信息，但是正常情况下只接受标准头字段信息
 
 -   `From`
-    1.  可以使用存地址格式：king@grassland.com
-    2.  使用地址和全名格式：'king@grassland.com (Elvis Parsley)'
-    3.  另一种格式：'Elvis Parsley <king@grassland.com>'
+    1.  可以使用存地址格式： `king@grassland.com`
+    2.  使用地址和全名格式： `'king@grassland.com (Elvis Parsley)'`
+    3.  另一种格式： `'Elvis Parsley <king@grassland.com>'`
 -   `To`
     收件人
 -   `Subject`

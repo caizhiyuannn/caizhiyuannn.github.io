@@ -201,7 +201,7 @@ heist, archibus, xoops, hero, spip
 |---|---|
 | `C-c C-s` | 插入snippet |
 |---|---|
-| `C-c C-f` | 显示无效空格 |
+| `C-c C-w` | 显示无效空格 |
 |---|---|
 
 

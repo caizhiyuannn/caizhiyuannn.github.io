@@ -15,7 +15,7 @@
 #+JEKYLL_CATEGORIES: linux
 #+JEKYLL_TAGS: linux shell 
 #+STARTUP: SHOWALL
-#+EXPORT_FILE_NAME: 2018-10-22-shell中的变量拓展
+#+EXPORT_FILE_NAME: 2018-10-22-shell-variable
 
 * SHELL中变量拓展
 

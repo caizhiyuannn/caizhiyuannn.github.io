@@ -1,0 +1,172 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: SHELL中的变量拓展
+#+DATE: <2018-10-22 Mon 17:48>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: linux
+#+JEKYLL_TAGS: linux shell 
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2018-10-22-shell中的变量拓展
+
+* SHELL中变量拓展
+
+** 字符串切割
+   1. 指定开始位置，截取到字符串结束
+      #+BEGIN_SRC bash :exports both
+        # 格式：${var:index}
+
+        var="hello1234"
+        echo ${var:5}
+
+      #+END_SRC
+
+      #+RESULTS:
+      : 1234
+
+   2. 指定开始位置和长度来截图字符串
+      #+BEGIN_SRC bash :exports both
+        # 格式： ${var:index:length}
+
+        var="hello1234"
+
+        echo ${var:0:5}
+      #+END_SRC
+
+      #+RESULTS: 
+      : hello
+
+*** 字符串删除
+    #+BEGIN_EXAMPLE
+      # 删除左边字符串
+      % 删除右边字符串
+    #+END_EXAMPLE
+
+    1. 最小删除
+       匹配到第一个就满足要求执行操作，可以用 =*= 通配符
+       #+BEGIN_SRC bash :exports both
+         # 格式： ${var#*str} ${var%str*}
+
+         string="/tmp/test/dir/file.txt"
+
+         # 移除左边第一个 / 
+         echo ${string#*/}
+
+         # 移除右面第一个 / 后面的内容, * 通配符
+         echo ${string%/*}
+
+       #+END_SRC
+
+       #+RESULTS:
+       | tmp/test/dir/file.txt |
+       | /tmp/test/dir         |
+
+    2. 最大删除
+       匹配到最后一个满足要求的地方并执行删除操作， 可以用 =*= 通配符
+       #+BEGIN_SRC bash :exports both
+         # 格式：${var##*str} ${var%%str*}
+
+         var="hellohello12341234"
+
+         # 左边开始贪婪匹配，执行移除
+         echo ${var##*3}
+
+         # 右面开始贪婪匹配，执行移除
+         echo ${var%%l*}
+       #+END_SRC
+
+       #+RESULTS:
+       |  4 |
+       | he |
+
+
+** 统计字符串长度
+   #+BEGIN_SRC bash :exports both
+     # 格式：${#var}
+
+     var="hello1234"
+     echo ${#var}
+   #+END_SRC
+
+   #+RESULTS:
+   : 9
+
+** 替换或删除操作
+   1. 替换一个符合的字符串
+      #+BEGIN_SRC bash :exports both
+        # 格式：${var/regex/replace}
+
+        var="hellohello12341234"
+
+        echo ${var/1234/haha}
+      #+END_SRC
+
+      #+RESULTS:
+      : hellohellohaha1234
+
+   2. 替换全部符合字符串
+      #+BEGIN_SRC bash :exports both
+        # 格式： ${var//regex/replace}
+
+        var="hellohello12341234"
+
+        echo ${var//hello/haha}
+      #+END_SRC
+
+      #+RESULTS:
+      : hahahaha12341234
+
+** 获取变量名
+   #+BEGIN_SRC bash :exports both
+     # 格式： ${!string@}
+
+     var="hellohello"
+     var1="haha"
+
+     echo ${!var@}
+   #+END_SRC
+
+   #+RESULTS:
+   : var var1
+
+** 指定变量默认值
+   #+BEGIN_SRC bash :exports both
+     # 如果变量 var 为空，则使用指定默认值
+     echo ${var-"变量var为空"}
+
+     # 变量 var1 没有声明或者为空，使用指定默认值
+     echo ${var1:-"变量var1为空"}
+
+     # 用默认值取代变量值，无论是否为空
+     var2="123"
+     echo ${var2+"变量var2默认值"}
+
+     # 用默认值取代变量值，如果变量值为空，则保留空值
+     var3=""
+     echo ${var2:+"取代var2值"}
+     echo ${var3:+"var3值不为空"}
+
+     # var4 未声明则使用默认值，通知var4设置未指定默认值
+     echo ${var4="var4未声明"}
+
+     # var3 为空或者未声明，则使用默认值，同时设置var3为指定默认值
+     echo ${var3:="var3为空或没设置"}
+
+   #+END_SRC
+
+   #+RESULTS:
+   | 变量var为空      |
+   | 变量var1为空     |
+   | 变量var2默认值   |
+   | 取代var2值       |
+   |                  |
+   | var4未声明       |
+   | var3为空或没设置 |

@@ -16,6 +16,15 @@
 #+JEKYLL_TAGS: 面向对象 设计模式 java
 #+STARTUP: showall
 #+EXPORT_FILE_NAME: 2018-10-15-programming_oob_design_mode
+#+LATEX_CLASS: cn-article
+#+LATEX_CLASS_OPTIONS:
+#+LATEX_HEADER:
+#+LATEX_HEADER_EXTRA:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+SUBTITLE:
+#+LATEX_COMPILER: pdflatex
+#+DATE: \today
 
 * 设计原则
   资料：《设计模式模式之禅》

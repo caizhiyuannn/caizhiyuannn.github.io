@@ -1,0 +1,53 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: emacs_snippet
+#+DATE: <2018-10-16 Tue 15:51>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: emacs
+#+JEKYLL_TAGS: emacs yasnippet
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2018-10-16-emacs_snippet
+
+* YASnippet
+  YASnippet 是emacs 的一个模板插件，允许键入缩写来拓展模块，补全内容。
+
+** 安装
+   - 使用 =package-install= 安装
+     #+BEGIN_SRC emacs-lisp
+       (package-install 'yasnippet)
+       (require 'yasnippet)
+       ;; 全局模式
+       (yas-global-mode 1)
+     #+END_SRC
+
+* Snippet 配置
+   
+** 快捷键
+   - =M-x yas-new-snippet= 快捷键： =C-c & C-n= \\
+     创建新的snippet模板[fn:1]
+   - =M-x yas-visit-snippet-file= 快捷键： =C-c & C-v= \\
+     查看模板[fn:2]
+
+** snippet 文件内容
+   #+BEGIN_EXAMPLE
+     # contributor: pluskid <pluskid@gmail.com>
+     # name: __...__
+     # --
+
+   #+END_EXAMPLE
+
+
+* Footnotes
+
+[fn:2] 脚注二。。。
+
+[fn:1] 这里是脚注。。。

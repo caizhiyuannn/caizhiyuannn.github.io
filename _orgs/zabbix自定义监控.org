@@ -25,8 +25,6 @@
 #+SUBTITLE:
 #+LATEX_COMPILER: pdflatex
 
-
-\newpage
 * 客户端配置
 ** 监控项
    一个监控项是一个独立的指标。快速添加多个监控项的一种方法是将一个预定义的模板附加到主机。
@@ -169,10 +167,10 @@
    4. 指定监控项返回内容的类型， 主要有numeric（数字）， character（字符）， log（日志信息），text（文本信息）
    5. 配置更新时间和保存历史时间等等。。
 
-\newpage
+
 ** 配图
    1. 自定义参数方式
-      [[~/Pictures/jietu/zabbix_user_item.png]]
-\newpage
+      [[/assets/images/posts/zabbix_user_item.png]]
+
    2. zabbix_sender方式
-      [[~/Pictures/jietu/zabbix_sender_item.png]]
+      [[/assets/images/posts/zabbix_sender_item.png]]

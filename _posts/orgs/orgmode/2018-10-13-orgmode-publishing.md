@@ -13,27 +13,27 @@ tags:
 
 # Table of Contents
 
-1.  [Publishing](#org4850473)
-2.  [发布文档需要通过配置文件实现](#orge961b01)
-    1.  [Project alist (alist 是一个类似dict一样的数据类型，可以存储键值)](#org2187699)
-    2.  [指定源和目标](#org79a17da)
-    3.  [选择文件（用于识别需要发布的文件）](#org952b1ac)
-    4.  [发布触发执行动作](#org0b1b916)
-    5.  [发布可选项](#orga537272)
-        1.  [通用属性](#org07243e6)
-        2.  [ASCII 指定属性](#org3af0b45)
-        3.  [Beamer 指定属性](#org84d2d59)
-        4.  [HTML 指定属性](#org94e993c)
-        5.  [LaTeX 指定属性](#org828d4c1)
-        6.  [Markdown 指定属性](#orgbb06c37)
-        7.  [ODT 指定属性](#orga58c020)
-        8.  [Texinfo 指定属性](#orgf0d579c)
-        9.  [一个复杂的例子](#org6d250df)
-    6.  [Sitemap](#org8b89858)
-    7.  [跨页面索引](#orgd1c2bcd)
+1.  [Publishing](#org5f8553c)
+2.  [发布文档需要通过配置文件实现](#orgcc4ac5d)
+    1.  [Project alist (alist 是一个类似dict一样的数据类型，可以存储键值)](#org68716da)
+    2.  [指定源和目标](#orgb20fbd2)
+    3.  [选择文件（用于识别需要发布的文件）](#orga5d136b)
+    4.  [发布触发执行动作](#org2bb23ca)
+    5.  [发布可选项](#org75948a0)
+        1.  [通用属性](#org2b128b3)
+        2.  [ASCII 指定属性](#org519af4c)
+        3.  [Beamer 指定属性](#org5237dcb)
+        4.  [HTML 指定属性](#org45a9d94)
+        5.  [LaTeX 指定属性](#org375d9fd)
+        6.  [Markdown 指定属性](#orgfe290e3)
+        7.  [ODT 指定属性](#orgb194af7)
+        8.  [Texinfo 指定属性](#orgdd5fab8)
+        9.  [一个复杂的例子](#org27b438e)
+    6.  [Sitemap](#orgcde0ca2)
+    7.  [跨页面索引](#org36162d7)
 
 
-<a id="org4850473"></a>
+<a id="org5f8553c"></a>
 
 # Publishing
 
@@ -45,12 +45,12 @@ Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML
 同时可以查看 org-mode 中的源文件：org-publish.el 说明
 
 
-<a id="orge961b01"></a>
+<a id="orgcc4ac5d"></a>
 
 # 发布文档需要通过配置文件实现
 
 
-<a id="org2187699"></a>
+<a id="org68716da"></a>
 
 ## Project alist (alist 是一个类似dict一样的数据类型，可以存储键值)
 
@@ -66,7 +66,7 @@ Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML
         这是通过components 绑定三个project-name ，发布时只需要指定一个项目名
 
 
-<a id="org79a17da"></a>
+<a id="orgb20fbd2"></a>
 
 ## 指定源和目标
 
@@ -85,7 +85,7 @@ Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML
     指定转化文件完成后需要调用的函数
 
 
-<a id="org952b1ac"></a>
+<a id="orga5d136b"></a>
 
 ## 选择文件（用于识别需要发布的文件）
 
@@ -101,7 +101,7 @@ Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML
     为真时， 将递归检查发布 base-directory 指定目录下的文件
 
 
-<a id="org0b1b916"></a>
+<a id="org2bb23ca"></a>
 
 ## 发布触发执行动作
 
@@ -119,7 +119,7 @@ Org 有一个发布管理系统，允许你将项目的文件自动转化成HTML
     如果为 **真** ， 则发布的文件将是 html 风格的文件，具有html标签
 
 
-<a id="orga537272"></a>
+<a id="org75948a0"></a>
 
 ## 发布可选项
 
@@ -128,7 +128,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
 注意： 如果文件内部添加 export 设置， 将会覆盖这些对应配置。
 
 
-<a id="org07243e6"></a>
+<a id="org2b128b3"></a>
 
 ### 通用属性
 
@@ -164,7 +164,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :with-todo-keywords	                org-export-with-todo-keywords
 
 
-<a id="org3af0b45"></a>
+<a id="org519af4c"></a>
 
 ### ASCII 指定属性
 
@@ -190,7 +190,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :ascii-verbatim-format	                org-ascii-verbatim-format
 
 
-<a id="org84d2d59"></a>
+<a id="org5237dcb"></a>
 
 ### Beamer 指定属性
 
@@ -203,7 +203,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :beamer-subtitle-format	                org-beamer-subtitle-format
 
 
-<a id="org94e993c"></a>
+<a id="org45a9d94"></a>
 
 ### HTML 指定属性
 
@@ -259,7 +259,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :body-only                                      ;; only export section between <body></body>
 
 
-<a id="org828d4c1"></a>
+<a id="org375d9fd"></a>
 
 ### LaTeX 指定属性
 
@@ -301,7 +301,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :latex-toc-command	                org-latex-toc-command
 
 
-<a id="orgbb06c37"></a>
+<a id="orgfe290e3"></a>
 
 ### Markdown 指定属性
 
@@ -310,7 +310,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :md-headline-style	org-md-headline-style
 
 
-<a id="orga58c020"></a>
+<a id="orgb194af7"></a>
 
 ### ODT 指定属性
 
@@ -328,7 +328,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :odt-use-date-fields	        org-odt-use-date-fields
 
 
-<a id="orgf0d579c"></a>
+<a id="orgdd5fab8"></a>
 
 ### Texinfo 指定属性
 
@@ -349,7 +349,7 @@ org-publish-project-alist 可以配置额外的选项增加支持
     :texinfo-text-markup-alist	        org-texinfo-text-markup-alist
 
 
-<a id="org6d250df"></a>
+<a id="org27b438e"></a>
 
 ### 一个复杂的例子
 
@@ -383,12 +383,12 @@ org-publish-project-alist 可以配置额外的选项增加支持
 {% endhighlight %}
 
 
-<a id="org8b89858"></a>
+<a id="orgcde0ca2"></a>
 
 ## TODO Sitemap
 
 
-<a id="orgd1c2bcd"></a>
+<a id="org36162d7"></a>
 
 ## 跨页面索引
 

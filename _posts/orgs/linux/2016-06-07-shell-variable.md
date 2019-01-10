@@ -11,11 +11,11 @@ tags:
 
 # Table of Contents
 
-1.  [Shell 的特殊变量](#orga7c9a5e)
-    1.  [$\* 和 $@ 的区别](#org550dde9)
+1.  [Shell 的特殊变量](#org591763b)
+    1.  [$\* 和 $@ 的区别](#orge2ea876)
 
 
-<a id="orga7c9a5e"></a>
+<a id="org591763b"></a>
 
 # Shell 的特殊变量
 
@@ -43,7 +43,7 @@ tags:
 |---|---|
 
 
-<a id="org550dde9"></a>
+<a id="orge2ea876"></a>
 
 ## $\* 和 $@ 的区别
 

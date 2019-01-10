@@ -23,7 +23,7 @@
 #+DESCRIPTION:
 #+KEYWORDS:
 #+SUBTITLE:
-#+LATEX_COMPILER: pdflatex
+
 
 * 客户端配置
 ** 监控项

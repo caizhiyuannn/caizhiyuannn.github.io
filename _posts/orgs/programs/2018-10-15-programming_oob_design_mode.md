@@ -1,6 +1,6 @@
 ---
 title: "面向对象设计模式-设计原则"
-date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-15 Mon&gt;</span></span>
+date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-10-15 Mon&gt;</span></span> \today
 layout: post
 categories: 
 - programming
@@ -12,18 +12,18 @@ tags:
 
 # Table of Contents
 
-1.  [设计原则](#org107ccc5)
-    1.  [单一职责](#org72a7786)
-    2.  [里氏替换原则](#org8171789)
-        1.  [示例](#orgf28a5f4)
-    3.  [依赖倒置原则](#org24c415b)
-        1.  [依赖的三种写法](#org1ae98ed)
-    4.  [接口隔离原则](#org17e75c3)
-    5.  [迪米特法则](#org292d4b4)
-    6.  [开闭原则](#orgdc83f24)
+1.  [设计原则](#org183c60d)
+    1.  [单一职责](#orgbfaebfc)
+    2.  [里氏替换原则](#org9bd9372)
+        1.  [示例](#org5d70fa0)
+    3.  [依赖倒置原则](#orgd815436)
+        1.  [依赖的三种写法](#org3ba40ad)
+    4.  [接口隔离原则](#org7b9650d)
+    5.  [迪米特法则](#org0aff8f7)
+    6.  [开闭原则](#org778482b)
 
 
-<a id="org107ccc5"></a>
+<a id="org183c60d"></a>
 
 # 设计原则
 
@@ -31,16 +31,8 @@ tags:
 
 ---
 
-<p class="verse">
-Great clouds overhead<br />
-Tiny black birds rise and fall<br />
-Snow covers Emacs<br />
-<br />
-&#xa0;&#xa0;&#xa0;&#x2013; AlexSchroeder<br />
-</p>
 
-
-<a id="org72a7786"></a>
+<a id="orgbfaebfc"></a>
 
 ## DONE 单一职责
 
@@ -52,7 +44,7 @@ Snow covers Emacs<br />
 -   一个类，最好只负责一件事，只有一个引起它变化的原因。
 
 
-<a id="org8171789"></a>
+<a id="org9bd9372"></a>
 
 ## DONE 里氏替换原则
 
@@ -73,7 +65,7 @@ Snow covers Emacs<br />
 -   子类覆写(override)或实现父类的方法时输出结果可以被缩小，方法的后置条件（即方法的返回值）要比父类更严格。
 
 
-<a id="orgf28a5f4"></a>
+<a id="org5d70fa0"></a>
 
 ### 示例
 
@@ -122,7 +114,7 @@ public class Client {
 {% endhighlight %}
 
 
-<a id="org24c415b"></a>
+<a id="orgd815436"></a>
 
 ## DONE 依赖倒置原则
 
@@ -136,7 +128,7 @@ public class Client {
 -   细节应该依赖抽象
 
 
-<a id="org1ae98ed"></a>
+<a id="org3ba40ad"></a>
 
 ### 依赖的三种写法
 
@@ -202,16 +194,16 @@ public class Client {
     {% endhighlight %}
 
 
-<a id="org17e75c3"></a>
+<a id="org7b9650d"></a>
 
 ## TODO 接口隔离原则
 
 
-<a id="org292d4b4"></a>
+<a id="org0aff8f7"></a>
 
 ## TODO 迪米特法则
 
 
-<a id="orgdc83f24"></a>
+<a id="org778482b"></a>
 
 ## TODO 开闭原则

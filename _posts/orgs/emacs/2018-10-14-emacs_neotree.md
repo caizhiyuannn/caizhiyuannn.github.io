@@ -12,19 +12,19 @@ tags:
 
 # Table of Contents
 
-1.  [Neotree](#orgaac21f2)
-2.  [wiki链接](#orgf3ddc39)
-3.  [基本使用方法](#orgf0d9244)
+1.  [Neotree](#orgf9d4ad4)
+2.  [wiki链接](#org737e3d9)
+3.  [基本使用方法](#org5d0b700)
 
 
-<a id="orgaac21f2"></a>
+<a id="orgf9d4ad4"></a>
 
 # Neotree
 
 ![img](/assets/images/posts/neotree-1.png)
 
 
-<a id="orgf3ddc39"></a>
+<a id="org737e3d9"></a>
 
 # wiki链接
 
@@ -32,7 +32,7 @@ tags:
 -   [英文wiki](https://www.emacswiki.org/emacs/NeoTree)
 
 
-<a id="orgf0d9244"></a>
+<a id="org5d0b700"></a>
 
 # 基本使用方法
 

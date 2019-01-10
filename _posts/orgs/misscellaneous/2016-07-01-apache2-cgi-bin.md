@@ -11,14 +11,14 @@ tags:
 
 # Table of Contents
 
-1.  [配置cgi 模块开启shell 执行功能](#org7d19df3)
-2.  [快速配置方法](#orge9b9a52)
-3.  [注意细节。](#orgee18177)
-4.  [具体shell 示例](#orgf0c371f)
-5.  [serve-cgi-bin.conf 改动地方示例](#orgfc2febc)
+1.  [配置cgi 模块开启shell 执行功能](#org9c751a7)
+2.  [快速配置方法](#org896aaa1)
+3.  [注意细节。](#org7fd8b4c)
+4.  [具体shell 示例](#org5e1ba8f)
+5.  [serve-cgi-bin.conf 改动地方示例](#org40745a8)
 
 
-<a id="org7d19df3"></a>
+<a id="org9c751a7"></a>
 
 # 配置cgi 模块开启shell 执行功能
 
@@ -42,7 +42,7 @@ tags:
 6.  重启apache2 服务
 
 
-<a id="orge9b9a52"></a>
+<a id="org896aaa1"></a>
 
 # 快速配置方法
 
@@ -56,7 +56,7 @@ tags:
 6.  重启服务
 
 
-<a id="orgee18177"></a>
+<a id="org7fd8b4c"></a>
 
 # 注意细节。
 
@@ -66,7 +66,7 @@ tags:
 -   shell 等脚本文件第一行必须声明执行脚本的语言。如shell为 ： #!/bin/bash
 
 
-<a id="orgf0c371f"></a>
+<a id="org5e1ba8f"></a>
 
 # 具体shell 示例
 
@@ -78,7 +78,7 @@ date
 {% endhighlight %}
 
 
-<a id="orgfc2febc"></a>
+<a id="org40745a8"></a>
 
 # serve-cgi-bin.conf 改动地方示例
 

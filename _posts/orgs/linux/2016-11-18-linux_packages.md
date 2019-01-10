@@ -11,16 +11,16 @@ tags:
 
 # Table of Contents
 
-1.  [linux 上的一些软件包](#org4301a03)
-    1.  [ASCII 输出文字的软件](#org2a864e2)
+1.  [linux 上的一些软件包](#orgf29d861)
+    1.  [ASCII 输出文字的软件](#orgea7dcb5)
 
 
-<a id="org4301a03"></a>
+<a id="orgf29d861"></a>
 
 # linux 上的一些软件包
 
 
-<a id="org2a864e2"></a>
+<a id="orgea7dcb5"></a>
 
 ## ASCII 输出文字的软件
 
@@ -126,21 +126,4 @@ tags:
     
     ditaa, 将ascii 符号转换成png格式的图像，需要java的支持。
     
-    {% highlight ditaa %}
-    +-----------+         +----------+
-    |           |         |          |
-    |   PLC     <--------->    PLC   |
-    |  Network  |         |    c707  |
-    |   cRED    |         |          |
-    +-----------+         +-+--------+
-                            |
-                            |
-               +------------+
-               |
-         +-----v------+             +-------------+             +-------------+
-         |            |             |  Shared     |             |             |
-         |  Database  +------------->  {d} cGRE   +-------------> Executive   |
-         |  c707      |             |             |             |  c707       |
-         +------------+             +-------------+             +-------------+
-    
-    {% endhighlight %}
+    ![img](test_ditaa.png)

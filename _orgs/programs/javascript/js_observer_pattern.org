@@ -1,0 +1,41 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 观察者模式
+#+DATE: <2019-06-23 日 22:30>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: programming
+#+JEKYLL_TAGS: javascript observer pattern
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-06-23-js_observer_pattern
+
+
+* JS 观察者模式
+
+#+BEGIN_SRC typescript
+  class Observer{
+      private static handlers = [];
+
+      // 订阅事件
+      public subscribe(fn: Function){
+          Observer.handlers.push(fn)
+      }
+
+      // 取消订阅
+      public unsubscribe(fn: Function) {
+          Observer.handlers = Observer.handlers.filter(val=>val !== fn)
+      }
+      // 发布事件
+      public notify(val) {
+          Observer.handlers.forEach(fn=>fn(val))
+      }
+  }
+#+END_SRC

@@ -1,0 +1,37 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 数据库监控相关信息
+#+DATE: <2019-06-29 六 18:54>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: database
+#+JEKYLL_TAGS: mysql monitor
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-06-29-mysql_schemainfo
+
+
+* information_schema 库
+
+** show processlist;
+
+显示正在运行的线程列表。
+
+show processlist 也可以在 PROCESSLIST 表中获取。
+
+
+
+* performance_schema 库
+
+** show global status;
+
+查看服务状态信息。
+
+同时可以通过 Performance Schema tables. 或 mysqladmin extended-status 命令查看

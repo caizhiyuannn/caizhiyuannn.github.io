@@ -1,0 +1,90 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: Gitlab issue自动化处理
+#+DATE: <2019-06-30 日 17:57>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: programming
+#+JEKYLL_TAGS: gitlab
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-06-30-gitlab_issue_auto
+
+
+* 流程(OAuth password授权方法)
+
+** 认证获取Token
+   
+   #+BEGIN_SRC bash
+     echo 'grant_type=password&username=<your_username>&password=<your_password>' > auth.txt
+     curl --data "@auth.txt" --request POST https://gitlab.example.com/oauth/token
+   #+END_SRC
+
+   #+BEGIN_SRC javascript
+     // 新建表单数据
+
+     const formData = new FormData()
+     formData.append("grant_type", "password")
+     formData.append("username", "user1")
+     formData.append("password", "password")
+     fetch("https://gitlab.example.com/oauth/token", {method:"POST", body:formData}).then(res=>res.json()).then(response=>{
+         console.log(response);
+     }).catch(err=>console.log(err))
+   #+END_SRC
+
+   Response:
+   
+   #+BEGIN_EXAMPLE
+     {
+       "access_token": "1f0af717251950dbd4d73154fdf0a474a5c5119adad999683f5b450c460726aa",
+       "token_type": "bearer",
+       "expires_in": 7200
+     }
+   #+END_EXAMPLE
+
+** 获取项目信息
+   #+BEGIN_SRC bash
+     # 获取指定用户项目信息
+     curl --header "Authorization: Bearer <access_token>" https://gitlab.example.com/api/v4/users/:userid/projects
+
+     # 获取指定组的项目信息
+     curl --header "Authorization: Bearer <access_token>" https://gitlab.example.com/api/v4/groups/:userid/projects
+   #+END_SRC
+
+
+** 获取项目Labels
+   获取指定项目的labels
+
+   #+BEGIN_SRC bash
+     curl --header "Authorization: Bearer <access_token>" https://gitlab.example.com/api/v4/projects/:id/labels
+   #+END_SRC
+
+** 新建Issue
+
+   #+BEGIN_SRC bash
+     curl --request POST --header "Authorization: Bearer <access_token>" https://gitlab.example.com/api/v4/projects/4/issues?title=Issues%20with%20auth&labels=bug
+
+     # 或者提交表单数据
+     curl -d 'title=Issues2%20with%20auth&labels=bug' --request POST --header "Authorization: Bearer 5f3b9960d21507e12fc3119f88b874ba50a83f7a15b2eb3d78ccd00ec0f2dedc" 'https://gitlab.example.com/api/v4/projects/1/issues'
+   #+END_SRC
+   表单内容清单：
+   | Attribute   | Type                   | Required | Description                                                               |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+   | id          | integer/string	 | yes      | The ID or URL-encoded path of the project owned by the authenticated user |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+   | title       | string                 | yes      | issue标题                                                                 |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+   | description | string                 | no       | issue 描述内容，支持Markdown                                              |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+   | labels      | string                 | no       | 标签                                                                      |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+   | 等等。。。  |                        |          |                                                                           |
+   |-------------+------------------------+----------+---------------------------------------------------------------------------|
+

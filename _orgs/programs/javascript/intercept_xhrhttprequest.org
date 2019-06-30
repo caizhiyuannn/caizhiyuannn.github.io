@@ -1,0 +1,65 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: 拦截HTML XHR请求数据
+#+DATE: <2019-06-23 日 22:13>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: programming
+#+JEKYLL_TAGS: javascript
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-06-23-intercept_xhrhttprequest
+
+
+* Javascript 通过脚本注入获取XHR请求数据
+
+使用场景 ： 油猴脚本获取网页自身请求内容，避免多次请求。
+
+[[https://stackoverflow.com/questions/16959359/intercept-xmlhttprequest-and-modify-responsetext][来源： Stack Overflow]]
+
+#+BEGIN_SRC javascript
+  (function() {
+      let rawOpen = XMLHttpRequest.prototype.open;
+      let arg = null;
+      XMLHttpRequest.prototype.open = function() {
+          arg = arguments;
+          if (!this._hooked) {
+              this._hooked = true;
+              setupHook(this);
+          }
+          rawOpen.apply(this, arguments);
+      };
+      // 添加hook获取内容
+      function setupHook(xhr) {
+          function getter() {
+              //   console.log("get responseText");
+
+              delete xhr.responseText;
+              let ret = xhr.responseText;
+              //   console.log(ret);
+              subject.next({ request: arg, response: ret });
+              setup();
+              return ret;
+          }
+
+          function setter(str) {
+              console.log("set responseText: %s", str);
+          }
+          function setup() {
+              Object.defineProperty(xhr, "responseText", {
+                  get: getter,
+                  set: setter,
+                  configurable: true
+              });
+          }
+          setup();
+      }
+  })()
+#+END_SRC

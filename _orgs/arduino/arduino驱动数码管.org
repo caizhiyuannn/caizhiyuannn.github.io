@@ -1,0 +1,83 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE: arduino驱动数码管
+#+DATE: <2019-07-08 一 19:14>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: arduino
+#+JEKYLL_TAGS: arduino 74HC595
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-07-08-arduino驱动数码管
+
+* arduino通过74HC595芯片驱动1位数码管
+  
+** 代码
+   #+BEGIN_SRC c
+     /*
+       74HC595 输出引脚连接数码管对应关系：
+       Q0 -> a
+       Q1 -> b
+       Q2 -> c
+       Q3 -> d
+       Q4 -> e
+       Q5 -> f
+       Q6 -> g
+       Q7 -> h
+
+       共阴接10K欧姆的电阻连接GND
+      ,*/
+
+     const int DS = 5;
+     const int SHCP = 4;
+     const int STCP = 3;
+
+     // 对应数字映射表
+     const byte data[10][8] = {
+         {1,1,1,1,1,1,0,0}, // 0
+         {0,1,1,0,0,0,0,0}, // 1
+         {1,1,0,1,1,0,1,0}, // 2
+         {1,1,1,1,0,0,1,0}, // 3
+         {0,1,1,0,0,1,1,0}, // 4
+         {1,0,1,1,0,1,1,0}, // 5
+         {1,0,1,1,1,1,1,0}, // 6
+         {1,1,1,0,0,0,0,0}, // 7
+         {1,1,1,1,1,1,1,0}, // 8
+         {1,1,1,1,0,1,1,0}, // 9
+     };
+
+     void setup() {
+         pinMode(DS, OUTPUT);
+         pinMode(SHCP, OUTPUT);
+         pinMode(STCP, OUTPUT);
+     }
+
+     void loop() {
+    
+         for (int i = 0; i < 10; i++)
+         {
+             digitalWrite(STCP, LOW);
+             for (int x = 7; x >= 0; x--)
+             {
+                 pushData(data[i][x]);
+             }
+             delay(1000);
+             digitalWrite(STCP, HIGH);
+             // break;
+         }
+    
+     }
+
+     void pushData(byte data) {
+         digitalWrite(SHCP, LOW);
+         digitalWrite(DS, data);
+         digitalWrite(SHCP, HIGH);
+     }
+   #+END_SRC

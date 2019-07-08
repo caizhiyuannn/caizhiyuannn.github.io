@@ -1,0 +1,185 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+#+TITLE:arduino基础学习
+#+DATE: <2019-07-06 六 17:50>
+#+AUTHOR: caizhiyuannn
+#+EMAIL: caizhiyuannn@gmail.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.9)
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: arduino
+#+JEKYLL_TAGS: arduino uno
+#+STARTUP: SHOWALL
+#+EXPORT_FILE_NAME: 2019-07-06-arduino基础学习1
+
+
+* IO基础
+  
+** setup函数
+   arduino 初始化函数，只会执行一次
+
+*** 串口函数
+    #+BEGIN_EXAMPLE
+      // 开启串行通信接口并设置通信波特率, 一般设置为9600，由setup函数初始化
+      Serial.begin(); 
+
+      // 关闭通信串口
+      Serial.end();    
+
+      // 判断串口缓冲器是否有数据装入
+      Serial.available();
+
+      // 读取串口数据
+      Serial.read();    
+
+      // 返回下一字节(字符)输入数据，但不删除它
+      Serial.peek();    
+
+      // 清空串口缓存
+      Serial.flush();    
+
+      // 写入字符串数据到串口
+      Serial.print();    
+
+      // 写入字符串数据+换行到串口
+      Serial.println();   
+
+      // 写入二进制数据到串口
+      Serial.write();     
+
+      // read时触发的事件函数
+      Serial.SerialEvent();
+
+      // 读取固定长度的二进制流
+      Serial.readBytes(buffer,length);
+
+      // 打印接到数据十进制表示的ascii码。  HEX 十六进制表示
+      Serial.println(incomingByte, DEC);
+    #+END_EXAMPLE
+
+
+** loop函数
+   arduino 主要运行函数，入口函数。会一直不断重复运行这个函数。
+
+
+** map函数
+   arduino 自带map函数可以将模拟量值转化成与目标模拟量对应的值范围，例如，电位器模拟量是0-1023信号值，而LED等模拟值是0-255
+
+   #+BEGIN_EXAMPLE
+     int value;
+     value = map(analogRead(pin), 0, 1023, 0, 255);
+
+     // 将0-1023 转化为 0-255值。
+   #+END_EXAMPLE
+
+** 知必会
+   1. pinMode 设置引脚模式，INPUT，OUTPUT 输入输出
+   2. digitalWrite 设置数字口电平，有HIGH 和 LOW， 对应 1 和 0
+   3. delay 延迟指定毫秒
+
+** 例子
+   #+BEGIN_SRC c
+     void setup() {
+       Serial.begin(9600);
+       // 设置13号引脚为输出模式，由于13号引脚和开发板的一个LED连接，对13引脚电平操作会作用LED灯
+       pinMode(13, OUTPUT); 
+    
+     }
+
+     void loop() {
+       // 将13号电平拉低，延迟800毫秒后将13号电平拉高；继续延迟800毫秒达到LED等不断开关效果
+       digitalWrite(13, LOW);
+       delay(800);
+       digitalWrite(13, HIGH);
+       delay(800);
+     }
+   #+END_SRC
+
+* 中断 attachInterrupt
+  用于arduino开发板设置和执行中断服务程序（ISR），loop函数会一直不停的运行，当需要人为去触发某个操作，中断程序将会暂停loop运行，跳到attachInterrupt设置指定的函数中运行。
+
+  中断服务对于检测arduino的输入有很大的用处。
+
+  *中断函数中delay函数无法工作*
+  
+
+  
+** 支持中断的引脚
+   | Arduino控制板   | 支持中断的引脚 |
+   |-----------------+----------------|
+   | UNO，Nano，Mini | 2，3           |
+   |-----------------+----------------|
+
+   
+** 语法
+   #+BEGIN_EXAMPLE
+     attachInterrupt(digitalPinToInterrupt(pin), ISR_FUNC, MODE);
+   #+END_EXAMPLE
+
+   1. pin 中断引脚号
+   2. ISR_FUNC 指定执行的中断函数
+   3. 中断模式
+
+*** 中断模式
+    - LOW 当引脚为 *低电平* 是触发中断服务程序
+    - CHANGE 当引脚电平 *发生变化* 是触发中断服务程序
+    - RISING 当引脚电平由 *低电平* 变成 *高电平* 时触发中断服务程序
+    - FALLING 当引脚电平由 *高电平* 变成 *低电平* 时触发中断服务程序
+
+*** 示例
+    #+BEGIN_SRC c
+      const byte ledPin = 13;
+
+      //用2号引脚作为中断触发引脚
+      const byte interruptPin = 2;  
+
+      volatile byte state = LOW;
+
+      void setup() {
+        pinMode(ledPin, OUTPUT);
+
+        //将中断触发引脚（2号引脚）设置为INPUT_PULLUP（输入上拉）模式
+        pinMode(interruptPin, INPUT_PULLUP); 
+
+        //设置中断触发程序
+        attachInterrupt(digitalPinToInterrupt(interruptPin), blink, CHANGE);
+      }
+
+      void loop() {
+        digitalWrite(ledPin, state);
+      }
+
+      //中断服务程序
+      void blink() {
+        state = !state;
+      }
+    #+END_SRC
+
+** 74HC595 芯片
+   具有8位移位寄存器和一个存储器，以及三态输出功能。
+
+*** 引脚图
+    [[/assets/images/article/74HC595.jpg]]
+
+*** 引脚说明
+    1. Q0 ~ Q7 分别是芯片输出引脚，例如控制8个LED灯的亮灭。
+    2. GND 接地， VCC接5V 的电源
+    3. DS是串行输入引脚，所谓串行就是使数据在一根信号线上按顺序一位一位地传输。每次传输1bit 数据
+    4. OE 是输出使能引脚，用来控制 Q0 ~ Q7 最终是否有电平输出。OE引脚为低电平时输出， 高电平是不输出。可以接GND保持低电平一直输出数据。
+    5. SHCP 是移位寄存器的时钟引脚。类似堆栈，将DS输出的数据推到8位位移寄存器。
+    6. STCP 是8位锁存器的时钟引脚，上升沿将移位寄存器里的8位数据复制到锁存器中。
+    7. MR 重置引脚，用来重置内部寄存器的引脚。低电平时重置内部寄存器(MemoryReset?)。 （记得接电阻保护芯片）
+    8. Q7S 串行输出引脚，用于级联，接下一个75HC595 DS引脚。
+
+*** 动图
+    [[/assets/images/article/74hc595_01.gif]]
+
+** 资料网址
+   1. [[https://blog.csdn.net/k1ang/article/details/80012463][74HC595级联电路]]
+   2. [[http://arduino.nxez.com/2016/12/20/74hc595-chip-principle-and-arduino-use-example.html][74HC595 芯片原理和 Arduino 使用实例]]
+   3. [[http://arduino.nxez.com/2016/12/19/arduino-to-digital-display-digital.html][Arduino 让数码管显示数字]]

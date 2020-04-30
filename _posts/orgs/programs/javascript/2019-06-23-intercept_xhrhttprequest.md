@@ -22,7 +22,8 @@ tags:
 [来源： Stack Overflow](https://stackoverflow.com/questions/16959359/intercept-xmlhttprequest-and-modify-responsetext)
 
 {% highlight javascript %}
-(function() {
+// subject 用于rxjs 主题订阅。
+(function(subject) {
     let rawOpen = XMLHttpRequest.prototype.open;
     let arg = null;
     XMLHttpRequest.prototype.open = function() {
@@ -36,8 +37,7 @@ tags:
     // 添加hook获取内容
     function setupHook(xhr) {
         function getter() {
-            //   console.log("get responseText");
-
+            // 删除 getter， 非删除属性。避免调用死循环
             delete xhr.responseText;
             let ret = xhr.responseText;
             //   console.log(ret);
@@ -58,5 +58,5 @@ tags:
         }
         setup();
     }
-})()
+})(subject)
 {% endhighlight %}
